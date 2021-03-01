@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 align-self-center p-static order-2 text-center">
+                <h1 class="font-weight-bold text-dark">أعمالنا السابقة </h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500">
+                <ul class="nav nav-pills sort-source sort-source-style-3" data-sort-id="portfolio"
+                    data-option-key="filter" data-plugin-options="{'layoutMode': 'masonry', 'filter': '*'}">
+                    <li class="nav-item active" data-option-value="*">
+                        <a class="nav-link text-1 text-uppercase active" href="#">الكل</a></li>
+                    {% for k , v  in choices %}
+                    <li class="nav-item" data-option-value=".{{k}}"><a class="nav-link text-1 text-uppercase"
+                            href="#">{{v}}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
+                    <div class="row portfolio-list sort-destination" data-sort-id="portfolio">
+                        {% for project in projects %}
+                        <div class="col-sm-6 col-lg-4 isotope-item {{project.service_type}} mb-2">
+                            <div class="card">
+                                <img class="card-img-top" src="{{project.main_image.url}}" alt="Card Image">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title mb-1 text-4 font-weight-bold">{{project}}</h4>
+
+                                    <a href="{% url 'project' project.slug %}"
+                                        class="read-more text-color-primary font-weight-semibold text-2">
+                                        التفاصيل
+                                        <i class="fas fa-angle-right position-relative top-1 ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor%}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

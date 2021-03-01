@@ -1,0 +1,72 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 align-self-center p-static order-2 text-center">
+                <h1 class="font-weight-bold text-dark">
+                    {% if message %}
+                    تفاصيل الرسالة
+                    {% elif service_request  %}
+                    تفاصيل الطلب
+                    {% endif %}
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+{% if message %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-width-3 border-radius-0 border-color-success">
+            <div class="card-body text-center">
+                <p>الاسم : <strong>{{message.name}}</strong></p>
+                <p>الهاتف: <strong>{{message.phone}}</strong></p>
+                <p>البريد الالكتروني: <strong>{{message.email}}</strong></p>
+                <p class="text-color-dark font-weight-bold text-4-5 mb-0">
+                    {{message.message}}
+                </p>
+                <p>وقت الطلب : <strong>{{message.time}}</strong></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <p class="text-color-dark font-weight-bold text-4-5 mb-0">
+                    <a href="{% url 'requests' %}">
+                        عودة لصفحة الطلبات و الرسائل الواردة
+                        <i class="fas fa-home fa-2x"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% elif service_request %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-width-3 border-radius-0 border-color-success">
+            <div class="card-body text-center">
+                <p>الاسم : <strong>{{service_request.name}}</strong></p>
+                <p>الهاتف: <strong>{{service_request.phone}}</strong></p>
+                <p>البريد الالكتروني: <strong>{{service_request.email}}</strong></p>
+                <p class="text-color-dark font-weight-bold text-4-5 mb-0">
+                    {{service_request.info}}
+                </p>
+                <p>وقت الطلب : <strong>{{service_request.time}}</strong></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <p class="text-color-dark font-weight-bold text-4-5 mb-0">
+                    <a href="{% url 'requests' %}">
+                        عودة لصفحة الطلبات و الرسائل الواردة
+                        <i class="fas fa-home fa-2x"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

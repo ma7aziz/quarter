@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-light-scale-1 page-header-md  mb-0">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-12 align-self-center p-static order-2 text-center">
+                            <div class="overflow-hidden pb-2">
+                                <h1 class="text-dark font-weight-bold text-9 appear-animation"
+                                    data-appear-animation="maskUp" data-appear-animation-delay="100">{{project}}</h1>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div class="container py-4">
+        <div class="row">
+            <div class="col appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+                <div class="owl-carousel owl-theme nav-inside nav-inside-edge nav-squared nav-with-transparency nav-dark nav-lg d-block overflow-hidden"
+                    data-plugin-options="{'items': 1, 'margin': 10, 'loop': true, 'nav': true, 'dots': true, 'autoHeight': true , 'autoplay' : true , 'rtl' : true}"
+                    style="height: 510px;">
+
+                    <div>
+                        <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
+                            <img src="{{project.main_image.url}}" class="img-fluid border-radius-0" alt="">
+                        </div>
+                    </div>
+                    {% if project.image1 %}
+                    <div>
+                        <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
+                            <img src="{{project.image1.url}}" class="img-fluid border-radius-0" alt="">
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if project.image2 %}
+                    <div>
+                        <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
+                            <img src="{{ project.image2.url }}" class="img-fluid border-radius-0" alt="">
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row pt-4 mt-2 mb-5">
+                <div class="col-md-7 mb-4 mb-md-0">
+                    <h2 class="text-color-dark font-weight-extra-bold text-5 mb-2">
+                        تفاصيل المشروع
+                    </h2>
+                    <p>{{ project.description }}</p>
+
+                    <hr class="solid my-5">
+                    <strong
+                        class="text-uppercase text-1 mr-3 text-dark float-left position-relative top-2">Share</strong>
+                    <ul class="social-icons">
+                        <li class="social-icons-facebook"><a href="https://www.facebook.com/" target="_blank"
+                                title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="social-icons-twitter"><a href="https://www.twitter.com/" target="_blank"
+                                title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li class="social-icons-linkedin"><a href="https://www.linkedin.com/" target="_blank"
+                                title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-width-3 border-radius-0 border-color-success">
+            <div class="card-body text-center">
+                <p class="text-color-dark font-weight-bold text-4-5 mb-0"><i
+                        class="fas fa-check text-color-success mr-1"></i> شكرا لتواصلك معنا ..
+                    <br>
+                    سيقوم فريقنا بالتواصل معك
+                    في اقرب وقت ممكن
+
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <p class="text-color-dark font-weight-bold text-4-5 mb-0">
+                    <a href="{% url 'index' %}">
+                        الرجوع للصفحة الرئيسية
+                        <i class="fas fa-home fa-2x"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

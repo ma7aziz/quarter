@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>كوارتر لخدمات و أنظمة التكييف</title>
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="كوارتر لخدمات و أنظمة التكييف">
+
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <link id="googleFonts"
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&amp;display=swap"
+        rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/animate/animate.compat.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/rtl-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-elements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme-shop.css' %}">
+    <link id="skinCSS" rel="stylesheet" href="{% static 'css/skins/default.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <script src="vendor/modernizr/modernizr.min.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEP1T05Z5V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SEP1T05Z5V');
+    </script>
+    <style>
+        .adminActions {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            z-index: 800000
+        }
+
+        .adminButton {
+            height: 60px;
+            width: 60px;
+            background-color: rgba(67, 83, 143, .8);
+            border-radius: 50%;
+            display: block;
+            color: #fff;
+            text-align: center;
+            position: relative;
+
+        }
+
+        .adminButton i {
+            font-size: 22px;
+        }
+
+        .adminButtons {
+            position: absolute;
+            width: 100%;
+            bottom: 120%;
+            text-align: center;
+        }
+
+        .adminButtons a {
+            display: block;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            text-decoration: none;
+            margin: 10px auto 0;
+            line-height: 1.15;
+            color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            position: relative;
+            box-shadow: 0 0 5px 1px rgba(51, 51, 51, .3);
+        }
+
+        .adminButtons a:hover {
+            transform: scale(1.05);
+        }
+
+        .adminButtons a:nth-child(1) {
+            background-color: #ff5722;
+            transition: opacity .2s ease-in-out .3s, transform .15s ease-in-out;
+        }
+
+        .adminButtons a:nth-child(2) {
+            background-color: #4CAF50;
+            transition: opacity .2s ease-in-out .25s, transform .15s ease-in-out;
+        }
+
+        .adminButtons a:nth-child(3) {
+            background-color: #f44336;
+            transition: opacity .2s ease-in-out .2s, transform .15s ease-in-out;
+        }
+
+        .adminButtons a:nth-child(4) {
+            background-color: #4CAF50;
+            transition: opacity .2s ease-in-out .15s, transform .15s ease-in-out;
+        }
+
+        .adminActions a i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .adminToggle {
+            -webkit-appearance: none;
+            position: absolute;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            z-index: 2;
+            transition: box-shadow .2s ease-in-out;
+            box-shadow: 0 3px 5px 1px rgba(51, 51, 51, .3);
+        }
+
+        .adminToggle:hover {
+            box-shadow: 0 3px 6px 2px rgba(51, 51, 51, .3);
+        }
+
+        .adminToggle:checked~.adminButtons a {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .required-field {
+            color: red;
+            font-weight: 600
+        }
+    </style>
+</head>
+
+<body class="loading-overlay-showing" data-loading-overlay
+    data-plugin-options="{'hideDelay': 500, 'effect': 'cubeProgress'}">
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <span class="cssload-cube-progress">
+                <span class="cssload-cube-progress-inner"></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="body">
+        <header id="header" class="header-effect-shrink"
+            data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+            <div class="header-body">
+                <div class="header-container container">
+                    <div class="header-row">
+                        <div class="header-column">
+                            <div class="header-row">
+                                <div class="header-logo">
+                                    <a href="{% url 'index' %}">
+                                        <img alt="Porto" width="100" height="48" data-sticky-width="82"
+                                            data-sticky-height="40" src="{% static 'img/q_logo.png' %}">
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-column justify-content-end">
+                            <div class="header-row">
+                                <div
+                                    class="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
+                                    <div
+                                        class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                        <nav class="collapse">
+                                            <ul class="nav nav-pills" id="mainNav">
+                                                <li class="">
+                                                    <a class="
+                                                        {% if request.path == '/' %}
+                                                    active
+                                                        {% endif %}    
+                                                    " href="{% url 'index' %}"> الرئيسية </a>
+                                                </li>
+                                                <li> <a class="
+                                                        {% if 'about' in request.path %}
+                                                        active
+                                                            {% endif %} 
+                                                        " href="{%  url 'about' %}">
+                                                        من نحن </a>
+                                                </li>
+                                                <li class=""> <a class="
+                                                    
+                                                    " href="{% url 'projects' %}">
+                                                        أعمالنا السابقة </a>
+                                                </li>
+                                                <li class=""> <a class="
+                                                    {% if 'contact' in request.path %}
+                                                    active
+                                                        {% endif %} 
+                                                    " href="{% url 'contact' %}">
+                                                        تواصل معنا </a>
+
+                                                </li>
+                                                <li> <a data-toggle="modal" data-target="#formModal" href="">
+                                                        طلب خدمة </a>
+                                                </li>
+
+
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <button class="btn header-btn-collapse-nav" data-toggle="collapse"
+                                        data-target=".header-nav-main nav">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
+                                </div>
+                                <div class="header-nav-features order-1 order-lg-2">
+                                    <div class="header-nav-feature header-nav-features-social-icons d-inline-flex">
+                                        <ul
+                                            class="header-social-icons social-icons d-none d-sm-block social-icons-clean ml-0">
+                                            <li class="social-icons-facebook"><a href="https://www.facebook.com/"
+                                                    target="_blank" title="Facebook"><i
+                                                        class="fab fa-facebook-f"></i></a></li>
+                                            <li class="social-icons-twitter">
+                                                <a href="https://www.instagram.com/" target="_blank" title="Twitter"><i
+                                                        class="fab fa-instagram"></i></a>
+                                            </li>
+                                            <li class="social-icons-linkedin"><a href="https://www.linkedin.com/"
+                                                    target="_blank" title="Linkedin"><i
+                                                        class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        {% block content %} {% endblock %}
+        <div class="adminActions">
+            <input type="checkbox" name="adminToggle" class="adminToggle" />
+            <a class="adminButton" href="#!">
+                <i class="fas fa-headset"></i>
+            </a>
+            <div class="adminButtons">
+                <a href="#" title="تواصل عبر الهاتف"><i class="fas fa-phone-alt"></i></a>
+                <a href="#" title="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" title="تواصل عبر الايميل"><i class="far fa-envelope"></i></a>
+
+            </div>
+        </div>
+        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title " id="formModalLabel">يسعدنا التعاون معا </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="contact-form form-fields-rounded" action="{% url 'request_service' %}"
+                            method="POST" novalidate="novalidate">
+                            {% csrf_token%}
+                            <div class="contact-form-success alert alert-success d-none mt-4">
+                                <strong>Success!</strong> Your message has been sent to us.
+                            </div>
+                            <div class="contact-form-error alert alert-danger d-none mt-4">
+                                <strong>Error!</strong> There was an error sending your message.
+                                <span class="mail-error-message text-1 d-block"></span>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label class="mb-1 text-2">الأسم <span class="required-field"> * </span> </label>
+                                    <input type="text" class="form-control text-3 h-auto py-2" name="name" required />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label class="mb-1 text-2">البريد الالكتروني </label>
+                                    <input type="email" data-msg-required="Please enter your email address."
+                                        data-msg-email="Please enter a valid email address." maxlength="100"
+                                        class="form-control text-3 h-auto py-2" name="email">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label class="mb-1 text-2">الهاتف <span class="required-field"> * </span></label>
+                                    <input type="text" data-msg-required="Please enter the subject." maxlength="100"
+                                        class="form-control text-3 h-auto py-2" name="phone" required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label class="mb-1 text-2">تفاصيل <span class="required-field"> * </span></label>
+                                    <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
+                                        class="form-control text-3 h-auto py-2" name="message" required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <div class="form-check">
+
+                                        <a href="{% url 'privacy' %}">
+                                            شروط الخصوصية
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <input type="submit" value="أرسل" class="btn btn-primary"
+                                        data-loading-text="Loading..." />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% if not 'incoming_requests' in request.path %}
+        <section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-lg-8">
+                        <div class="call-to-action-content">
+                            <h3 class="font-weight-bold">
+                                رواد خدمات التبريد و التكييف في المملكة
+                            </h3>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4">
+                        <div class="call-to-action-btn">
+                            <a href="#" data-toggle="modal" data-target="#formModal"
+                                class="btn btn-modern text-2 btn-primary">اطلب خدماتنا </a><span
+                                class="arrow hlb d-none d-md-block appear-animation animated rotateInUpLeft appear-animation-visible"
+                                data-appear-animation="rotateInUpLeft"
+                                style="left: 110%; top: -40px; animation-delay: 100ms;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <footer id="footer">
+            <div class="container container-lg-custom">
+                <div class="row py-5">
+                    <div class="col text-center">
+                        <ul
+                            class="footer-social-icons social-icons social-icons-clean social-icons-big social-icons-opacity-light social-icons-icon-light mt-1">
+                            <li class="social-icons-facebook"><a href="https://www.facebook.com/" target="_blank"
+                                    title="Facebook"><i class="fab fa-facebook-f text-2"></i></a></li>
+                            <li class="social-icons-twitter"><a href="https://www.twitter.com/" target="_blank"
+                                    title="Twitter"><i class="fab fa-twitter text-2"></i></a></li>
+                            <li class="social-icons-linkedin"><a href="https://www.linkedin.com/" target="_blank"
+                                    title="Linkedin"><i class="fab fa-linkedin-in text-2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright footer-copyright-style-2">
+                <div class="container container-lg-custom py-2">
+                    <div class="row py-4">
+                        <div class="col-lg-8 text-center text-lg-left mb-2 mb-lg-0">
+                            <p>
+                                <span class="pr-0 pr-md-3 d-block d-md-inline-block"><i
+                                        class="far fa-dot-circle text-color-primary top-1 p-relative pl-1"></i>
+                                    <span class="text-color-light opacity-7 pl-1">المملكة العربية السعودية</span>
+                                </span>
+                                <span class="pr-0 pr-md-3 d-block d-md-inline-block"><i
+                                        class="fab fa-whatsapp text-color-primary top-1 p-relative pl-1"></i><a
+                                        href="tel:1234567890" class="text-color-light opacity-7 pl-1">(800)
+                                        123-4567</a></span>
+                                <span class="pr-0 pr-md-3 d-block d-md-inline-block"><i
+                                        class="far fa-envelope text-color-primary top-1 p-relative pl-1"></i><a
+                                        href="mailto:mail@gmail.com" class="text-color-light opacity-7 pl-1"><span
+                                            class="">info@quarterac.com</span></a></span>
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end mb-4 mb-lg-0 pt-4 pt-lg-0">
+                            <p>© Copyright 2021. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.appear/jquery.appear.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.cookie/jquery.cookie.min.js' %}"></script>
+    <script src="{% static 'vendor/popper/umd/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.validation/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.gmap/jquery.gmap.min.js' %}"></script>
+    <script src="{% static 'vendor/lazysizes/lazysizes.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope/jquery.isotope.min.js' %}"></script>
+    <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'vendor/vide/jquery.vide.min.js' %}"></script>
+    <script src="{% static 'vendor/vivus/vivus.min.js' %}"></script>
+    <script src="{% static 'vendor/modernizr/modernizr.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'js/theme.init.js' %}"></script>
+
+</body>
+
+</html>

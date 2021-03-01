@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+\
+{% block content %}
+<section class="page-header page-header-modern bg-color-light-scale-1 page-header-lg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 align-self-center p-static order-2 text-center">
+                <h1 class="font-weight-bold text-dark">الطلبات الواردة</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <section class="card card-admin">
+                <header class="card-header">
+                    <h2 class="card-title">الطلبات </h2>
+                </header>
+                <div class="card-body" style="height:500px; overflow:auto">
+                    <table class="table table-bordered table-striped mb-0 " id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>البريد الالكتروني</th>
+                                <th>الهاتف</th>
+                                <th>وقت الطلب </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for req in requests %}
+                            <tr>
+                                <td><a href="contact_request/{{req.id}}">{{req.name}}</a></td>
+                                <td>{{req.email}}
+                                </td>
+                                <td>{{req.phone}}</td>
+                                <td>{{req.time}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <section class="card card-admin">
+                <header class="card-header">
+                    <h2 class="card-title">الرسائل</h2>
+                </header>
+                <div class="card-body" style="height:500px; overflow:auto">
+                    <table class="table table-bordered table-striped mb-0 " id="datatable-default">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>البريد الالكتروني</th>
+                                <th>الهاتف</th>
+                                <th>وقت الطلب </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for req in messages %}
+
+                            <tr>
+                                <td>
+                                    <a href="/message/{{req.id}}">{{req.name}}</a>
+                                </td>
+                                <td>{{req.email}}
+                                </td>
+                                <td>{{req.phone}}</td>
+                                <td>{{req.time}}</td>
+
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
