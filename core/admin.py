@@ -4,6 +4,6 @@ from .models import Service, Request, Project, Contact
 
 
 admin.site.register(Service)
-admin.site.register(Request)
+# admin.site.register(Request)
 admin.site.register(Project)
-admin.site.register(Contact)
+# admin.site.register(Contact)

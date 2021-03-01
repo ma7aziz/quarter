@@ -2,14 +2,16 @@
 {%load static %}
 {% block branding %}
 <h1 id="head" style="color: #fff;">
-    كوارتر
+    <img src="{% static 'img/q_logo_light.png' %}" alt="">
+
 </h1>
 
 
 {% endblock %}
 
 {% block nav-global %}
-<a href="" class="orders-tab" style="background-color: #65ba6e; padding: 10px">Orders</a>
+<a href="{% url 'requests' %}" class="orders-tab" style="background-color: 
+#ee5356; padding: 10px">الرسائل و الطلبات الواردة </a>
 {% endblock %}
 
 {% block extrastyle %}
